@@ -46,3 +46,11 @@ body {
   font-size: 16px;
   cursor: pointer;
 }
+
+
+#result {
+  margin-top: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  min-height: 30px;
+}
