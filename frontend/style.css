@@ -4,6 +4,7 @@ body {
   margin-top: 50px;
 }
 
+/* Style for the wheel container and wheel */
 #wheel-container {
   position: relative;
   width: 300px;
@@ -11,10 +12,11 @@ body {
   margin: 30px auto;
 }
 
+/* Style for the wheel itself */
 #wheel {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  border-radius: 50%;   /* Makes the wheel circular */
   border: 5px solid #333;
   background: conic-gradient(
     #f94144 0deg 45deg,
@@ -29,6 +31,7 @@ body {
   transition: transform 4s ease-out;
 }
 
+/* Style for the pointer */
 #pointer {
   position: absolute;
   top: -10px;
@@ -40,14 +43,14 @@ body {
   border-right: 15px solid transparent;
   border-top: 25px solid black;
 }
-
+/* Style for the spin button */
 #spin-btn {
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
 }
 
-
+/* Style for the result display */
 #result {
   margin-top: 20px;
   font-size: 24px;

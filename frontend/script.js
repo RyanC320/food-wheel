@@ -1,4 +1,5 @@
 // 8 foods matching the 8 slices in the wheel (order matters!)
+// Array of food names
 const foods = [
   "Pizza",
   "Sushi",
@@ -9,9 +10,10 @@ const foods = [
   "Pasta",
   "Fried Chicken"
 ];
-
+// Get references to the wheel and spin button elements
 const wheel = document.getElementById("wheel");
 const spinBtn = document.getElementById("spin-btn");
+const resultDiv = document.getElementById("result");
 
 let currentRotation = 0; // tracks total rotation so it keeps spinning forward each time
 
@@ -32,7 +34,7 @@ spinBtn.addEventListener("click", () => {
   wheel.style.transform = `rotate(${currentRotation}deg)`;
 
   // 5. After the animation finishes (4s, matching our CSS transition), show result
-  const resultDiv = document.getElementById("result");
+    
 resultDiv.textContent = ""; // clear old result while spinning
 
 setTimeout(() => {
