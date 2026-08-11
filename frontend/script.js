@@ -17,6 +17,7 @@ const resultDiv = document.getElementById("result");
 
 let currentRotation = 0; // tracks total rotation so it keeps spinning forward each time
 
+// Code runs when button is clicked
 spinBtn.addEventListener("click", () => {
   // 1. Pick a random food index (0 to 7)
   const randomIndex = Math.floor(Math.random() * foods.length);
@@ -34,7 +35,7 @@ spinBtn.addEventListener("click", () => {
   wheel.style.transform = `rotate(${currentRotation}deg)`;
 
   // 5. After the animation finishes (4s, matching our CSS transition), show result
-    
+
 resultDiv.textContent = ""; // clear old result while spinning
 
 setTimeout(() => {
