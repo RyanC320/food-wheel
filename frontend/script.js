@@ -1,15 +1,11 @@
-// 8 foods matching the 8 slices in the wheel (order matters!)
-// Array of food names
-const foods = [
-  "Pizza",
-  "Sushi",
-  "Burger",
-  "Tacos",
-  "Ramen",
-  "Salad",
-  "Pasta",
-  "Fried Chicken"
-];
+let foods = []; // will be filled in by fetching from backend
+
+async function loadFoods() {
+  const response = await fetch("http://127.0.0.1:5000/foods");
+  foods = await response.json();
+}
+
+loadFoods(); // run this immediately when the page loads
 // Get references to the wheel and spin button elements
 const wheel = document.getElementById("wheel");
 const spinBtn = document.getElementById("spin-btn");
