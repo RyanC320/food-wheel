@@ -1,33 +1,33 @@
-# flask create web applicaiton
-# jsonify convert data into JSON
-# CORS allows frontend talk to backend
 from flask import Flask, jsonify
 from flask_cors import CORS
+from dotenv import load_dotenv
+import mysql.connector
+import os
 
-# create web app store in "app" variable
-# CORS turn on
+load_dotenv()  # reads variables from .env
+
 app = Flask(__name__)
 CORS(app)
 
-# List
-foods = [
-    "Pizza",
-    "Sushi",
-    "Burger",
-    "Tacos",
-    "Ramen",
-    "Salad",
-    "Pasta",
-    "Fried Chicken"
-]
+def get_db_connection():
+    return mysql.connector.connect(
+        host=os.getenv("DB_HOST"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        database=os.getenv("DB_NAME")
+    )
 
-# create route to get foods
 @app.route("/foods")
-
 def get_foods():
-    return jsonify(foods)
-# start the server running on port 5000
-# debug, so that it will automatically restart when you make changes to the code
-# port, so that it will run on port 5000
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT name FROM restaurants_cache")
+    results = cursor.fetchall()
+    cursor.close()
+    conn.close()
+
+    names = [row["name"] for row in results]
+    return jsonify(names)
+
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
