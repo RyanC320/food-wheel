@@ -33,8 +33,6 @@ def get_foods():
     names = [row["name"] for row in results]
     return jsonify(names)
 
-if __name__ == "__main__":
-    app.run(debug=True, port=5000)
 
 # @app.route, if users visits /feedback, immediately call below function
 @app.route("/feedback", methods=["POST"])
@@ -55,7 +53,6 @@ def add_feedback():
 
     return jsonify({"status": "success"}) #telling fronted its successful inserted
 
-# Save record every time the wheel spin
 @app.route("/spin", methods=["POST"])
 def save_spin():
     data = request.get_json()
@@ -64,13 +61,12 @@ def save_spin():
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute(
-        "INSERT INTO spins (restaurant_name) VALUES (%s)",
+        "INSERT INTO spin_history (restaurant_name) VALUES (%s)",
         (restaurant_name,)
     )
     conn.commit()
     cursor.close()
     conn.close()
-
     return jsonify({"status": "success"})
 
 # Returns the 10 most recent spins
@@ -84,3 +80,8 @@ def get_history():
     conn.close()
 
     return jsonify(results)
+
+
+
+if __name__ == "__main__":
+    app.run(debug=True, port=5000)

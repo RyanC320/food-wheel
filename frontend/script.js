@@ -18,7 +18,7 @@ const thumbsUpBtn = document.getElementById("thumbs-up");
 const thumbsDownBtn = document.getElementById("thumbs-down");
 
 // Get references for history feature
-const showHistoryBtn = document.getElementById("show-history-btn");
+const showHistoryBtn = document.getElementById("history");
 const historyList = document.getElementById("history-list");
 
 let currentRotation = 0; // tracks total rotation so it keeps spinning forward each time
