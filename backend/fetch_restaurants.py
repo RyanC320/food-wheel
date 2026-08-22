@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# connect to the MYSQL database using the credentials from the .env file
 def get_db_connection():
     return mysql.connector.connect(
         host=os.getenv("DB_HOST"),
@@ -27,6 +28,8 @@ def fetch_from_openstreetmap(lat, lon):
     headers = {
         "User-Agent": "FoodWheelStudentProject/1.0"
     }
+
+    # Make request to OpenStreetMap API and response in json format
     response = requests.get(url, params=params, headers=headers)
     print("STATUS CODE:", response.status_code)
     data = response.json()
